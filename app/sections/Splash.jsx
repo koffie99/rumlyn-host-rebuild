@@ -6,7 +6,7 @@ import React from "react"
 const Splash = () => {
   // to login page
   const toLogin = () => {
-    location.href = "/login"
+    location.href = "/screens/login"
   }
 
   return (

@@ -34,6 +34,8 @@ const Login = () => {
           if (result.msg === "login successful") {
             setLoading(false)
             toast.success("Login successful")
+            sessionStorage.setItem("creatorName", result.creator.creator_name)
+            location.href = "/screens/portal"
           } else {
             setLoading(false)
             toast.error("Kindly check your credentials and try again")

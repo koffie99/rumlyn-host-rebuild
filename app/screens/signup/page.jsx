@@ -41,6 +41,7 @@ const SignUp = () => {
           if (result.msg === "creator signed up successfully") {
             setLoading(false)
             toast.success("Host account created successfully")
+            location.href = "/screens/login"
           } else {
             setLoading(false)
             toast.error("Something went wrong, kindly try again")
