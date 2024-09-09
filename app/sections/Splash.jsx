@@ -15,7 +15,7 @@ const Splash = () => {
           className="h-[50vh] w-full"
         />
       </div>
-      <div className="md:flex-[0.6] flex-1 flex flex-col md:p-0 p-3">
+      <div className="md:flex-[0.6] flex-1 flex flex-col md:p-0 p-7">
         <h1 className="md:text-4xl text-3xl text-white mb-3 md:text-left text-center">
           Rent And Sell Your Properties Today
         </h1>
