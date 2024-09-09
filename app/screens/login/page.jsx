@@ -84,7 +84,13 @@ const Login = () => {
           />
           <div className="flex items-center justify-between">
             <div></div>
-            <button>Forgot Password?</button>
+            <button
+              onClick={() => {
+                location.href = "/screens/forgot-password"
+              }}
+            >
+              Forgot Password?
+            </button>
           </div>
           <Button
             className="bg-[#08a88a] text-white p-6 rounded-md hover:bg-[#258573] login-btn"

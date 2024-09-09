@@ -29,19 +29,22 @@ p {
 }
 
 .login-bg,
-.signup-bg {
+.signup-bg,
+.forgot-bg {
   background-image: url("/images/bg.png");
   background-repeat: no-repeat;
   background-size: cover;
 }
 
 .login-btn,
-.signup-btn {
+.signup-btn,
+.send-btn {
   border: none !important;
 }
 
 .login-btn:hover,
-.signup-btn:hover {
+.signup-btn:hover,
+.send-btn:hover {
   background: #06856d !important;
   color: #ffffff !important;
 }
