@@ -120,7 +120,6 @@ const Portal = () => {
         >
           <div
             className="flex items-center gap-3 side-nav text-[tomato]"
-            onClick={(e) => setPage("settings")}
           >
             <RiLogoutCircleLine />
             <p>Logout</p>
