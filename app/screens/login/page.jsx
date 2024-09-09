@@ -49,7 +49,7 @@ const Login = () => {
 
   // to sign up page
   const toSignUp = () => {
-    location.href = "/signup"
+    location.href = "/screens/signup"
   }
 
   return (
