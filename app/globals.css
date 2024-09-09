@@ -28,17 +28,20 @@ p {
   background-size: cover;
 }
 
-.login-bg {
+.login-bg,
+.signup-bg {
   background-image: url("/images/bg.png");
   background-repeat: no-repeat;
   background-size: cover;
 }
 
-.login-bg {
+.login-btn,
+.signup-btn {
   border: none !important;
 }
 
-.login-btn:hover {
+.login-btn:hover,
+.signup-btn:hover {
   background: #06856d !important;
   color: #ffffff !important;
 }

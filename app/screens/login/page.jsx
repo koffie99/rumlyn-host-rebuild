@@ -17,8 +17,8 @@ const Login = () => {
       myHeaders.append("Content-Type", "application/json")
 
       const raw = JSON.stringify({
-        email: email,
-        password: password,
+        email: email.trim(),
+        password: password.trim(),
       })
 
       const requestOptions = {
@@ -47,6 +47,11 @@ const Login = () => {
     }
   }
 
+  // to sign up page
+  const toSignUp = () => {
+    location.href = "/signup"
+  }
+
   return (
     <div className="min-h-screen w-full login-bg flex items-center justify-center gap-8 md:p-0 p-7">
       <div className="h-[80vh] md:flex-[0.5] flex-1 rounded-lg bg-white shadow-2xl flex flex-col items-center">
@@ -62,7 +67,7 @@ const Login = () => {
           <h2 className="text-2xl">Welcome here</h2>
           <p className="text-sm">Login to get your listings out there</p>
         </div>
-        <div className="flex w-[70%] flex-col gap-4 mt-7">
+        <div className="flex md:w-[70%] w-[90%] flex-col gap-4 mt-7">
           <input
             type="email"
             placeholder="Email"
@@ -96,7 +101,9 @@ const Login = () => {
           </Button>
           <p className="text-center text-sm mt-4">
             Don't have an account yet?{" "}
-            <button className="underline">Create One</button>
+            <button className="underline" onClick={() => toSignUp()}>
+              Create One
+            </button>
           </p>
         </div>
       </div>
