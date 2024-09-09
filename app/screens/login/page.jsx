@@ -20,7 +20,7 @@ const Login = () => {
         </div>
         <div className="flex w-[70%] flex-col gap-4 mt-7">
           <input
-            type="email"
+            type="email" 
             placeholder="Email"
             className="p-3 rounded-md ring-1 ring-[#ccc]"
           />
