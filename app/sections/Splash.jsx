@@ -11,6 +11,7 @@ const Splash = () => {
           height={500}
           alt="rumlyn cover photo"
           src="/images/rumlyncover.png"
+          quality={100}
         />
       </div>
       <div className="flex-[0.6]">
