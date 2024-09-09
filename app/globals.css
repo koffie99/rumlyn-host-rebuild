@@ -27,3 +27,9 @@ p {
   background-repeat: no-repeat;
   background-size: cover;
 }
+
+.login-bg {
+  background-image: url("/images/bg.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}

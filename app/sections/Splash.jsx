@@ -1,8 +1,14 @@
+"use client"
 import { Button } from "antd"
 import Image from "next/image"
 import React from "react"
 
 const Splash = () => {
+  // to login page
+  const toLogin = () => {
+    location.href = "/screens/login"
+  }
+
   return (
     <div className="h-[100%] py-12 bg-[#08a88a] flex items-center md:flex-row flex-col justify-center gap-7">
       <div>
@@ -24,7 +30,10 @@ const Splash = () => {
           with Rumlyn. Its free to create an account and start making some extra
           money today.
         </p>
-        <Button className="bg-white py-6 rounded-full font-semibold text-[#08a88a] mt-3 md:w-[60%] w-full">
+        <Button
+          className="bg-white py-6 rounded-full font-semibold text-[#08a88a] mt-3 md:w-[60%] w-full"
+          onClick={() => toLogin()}
+        >
           Start Listing Now
         </Button>
       </div>
