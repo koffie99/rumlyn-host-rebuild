@@ -4,7 +4,7 @@ import React from "react"
 
 const Splash = () => {
   return (
-    <div className="h-[100%] p-12 bg-[#08a88a] flex items-center md:flex-row flex-col justify-center gap-7">
+    <div className="h-[100%] py-12 bg-[#08a88a] flex items-center md:flex-row flex-col justify-center gap-7">
       <div>
         <Image
           width={500}
@@ -15,8 +15,8 @@ const Splash = () => {
           className="h-[50vh] w-full"
         />
       </div>
-      <div className="flex-[0.6] flex flex-col p-12 md:p-0">
-        <h1 className="text-4xl text-white mb-3 md:text-left text-center">
+      <div className="flex-[0.6] flex flex-col md:p-0 p-3">
+        <h1 className="md:text-4xl text-3xl text-white mb-3 md:text-left text-center">
           Rent And Sell Your Properties Today
         </h1>
         <p className="text-white md:text-left text-center">
