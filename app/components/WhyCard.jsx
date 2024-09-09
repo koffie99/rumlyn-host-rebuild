@@ -26,7 +26,7 @@ const WhyCard = ({ image, title, desc, image_position }) => {
         quality={100}
         className={`${
           image_position === "right" ? "block" : "hidden"
-        } w-64 h-64 sm:w-120 sm:h-120 md:w-fit md:h-fit`}
+        } w-65 h-65 sm:w-80 sm:h-80 md:w-fit md:h-fit`}
       />
     </div>
   )

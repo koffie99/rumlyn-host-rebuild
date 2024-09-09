@@ -12,7 +12,7 @@ const Splash = () => {
           alt="rumlyn cover photo"
           src="/images/rumlyncover.png"
           quality={100}
-          className="h-[50vh] w-full"
+          className="h-[50vh] w-full md:h-[500px] md:w-[500px]"
         />
       </div>
       <div className="md:flex-[0.6] flex-1 flex flex-col md:p-0 p-7">
@@ -24,7 +24,7 @@ const Splash = () => {
           with Rumlyn. Its free to create an account and start making some extra
           money today.
         </p>
-        <Button className="bg-white py-6 rounded-full font-semibold text-[#08a88a] mt-3">
+        <Button className="bg-white py-6 rounded-full font-semibold text-[#08a88a] mt-3 md:w-[60%] w-full">
           Start Listing Now
         </Button>
       </div>
