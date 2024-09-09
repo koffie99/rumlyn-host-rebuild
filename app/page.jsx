@@ -3,6 +3,8 @@ import { Button, Popconfirm } from "antd"
 import Splash from "./sections/Splash"
 import About from "./sections/About"
 import Why from "./sections/Why"
+import Contact from "./sections/Contact"
+import Footer from "./sections/Footer"
 
 export default function Home() {
   return (
@@ -10,6 +12,8 @@ export default function Home() {
       <Splash />
       <About />
       <Why />
+      <Contact />
+      <Footer />
     </div>
   )
 }

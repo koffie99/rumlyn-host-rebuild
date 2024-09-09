@@ -4,7 +4,7 @@ import React from "react"
 
 const Splash = () => {
   return (
-    <div className="h-[100%] py-12 bg-[#08a88a] flex items-center md:flex-row flex-col justify-center gap-7">
+    <div className="h-[100%] p-12 bg-[#08a88a] flex items-center md:flex-row flex-col justify-center gap-7">
       <div>
         <Image
           width={500}
