@@ -24,7 +24,7 @@ const Splash = () => {
           with Rumlyn. Its free to create an account and start making some extra
           money today.
         </p>
-        <Button className="bg-white py-5 font-semibold text-[#08a88a] mt-3">
+        <Button className="bg-white py-6 rounded-full font-semibold text-[#08a88a] mt-3">
           Start Listing Now
         </Button>
       </div>

@@ -30,7 +30,7 @@ const Contact = () => {
             <textarea
               rows={5}
               type="text"
-              placeholder="Name"
+              placeholder="Message"
               className="ring-1 ring-[#ccc] rounded p-2"
             />
             <Button className="w-full py-5 bg-[#08a88a] text-white">
