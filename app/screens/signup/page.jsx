@@ -47,11 +47,15 @@ const SignUp = () => {
             toast.error("Something went wrong, kindly try again")
           }
         })
-        .catch((error) => console.error(error))
+        .catch((error) => {
+          setLoading(false)
+          toast.error("Something went wrong, kindly try again")
+          console.error(error)
+        })
     } catch (err) {
       setLoading(false)
       toast.error("Something went wrong, kindly try again")
-      console.log(err)
+      console.error(err)
     }
   }
 
@@ -62,9 +66,23 @@ const SignUp = () => {
 
   return (
     <div className="min-h-screen signup-bg flex items-center flex-col justify-center">
-      <h2 className="text-2xl">Become a host today</h2>
-      <p>Join the many other hosts boosting their sales on rumlyn</p>
-      <div className="h-[70vh] bg-white rounded-lg shadow-2xl md:w-[40%] w-[90%] mt-6 md:p-12 p-5 flex flex-col gap-4">
+      <div className="text-center px-5 mb-4">
+        <h2 className="text-2xl">Become a host today</h2>
+        <p className="text-center">
+          Join the many other hosts boosting their sales on rumlyn
+        </p>
+      </div>
+      <div className="md:h-[70vh] h-fit md:py-0 pb-14 bg-white rounded-lg shadow-2xl md:w-[40%] w-[90%] mt-6 md:p-12 p-5 flex flex-col gap-4">
+        <div className="flex justify-center">
+          <Image
+            width={100}
+            height={100}
+            alt="login representation"
+            src="/images/styled-logo.png"
+            quality={100}
+            className="bg-white p-5 rounded-full shadow-2xl mt-[-50px]"
+          />
+        </div>
         <input
           type="text"
           placeholder="Name"
