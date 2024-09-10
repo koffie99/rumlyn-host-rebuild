@@ -15,6 +15,8 @@ import Activities from "@/app/tabs/Activities"
 import Followers from "@/app/tabs/Followers"
 import { RiLogoutCircleLine } from "react-icons/ri"
 import { Popconfirm } from "antd"
+import { HiMenuAlt3 } from "react-icons/hi"
+import { IoCloseOutline } from "react-icons/io5"
 
 const Portal = () => {
   let creatorName
@@ -130,12 +132,7 @@ const Portal = () => {
         </Popconfirm>
       </div>
       {/* mobile menu toggle */}
-      <button
-        className="fixed top-0 right-0 p-4 md:hidden"
-        onClick={() => setSidebarOpen(!sidebarOpen)}
-      >
-        {sidebarOpen ? "Close Menu" : "Open Menu"}
-      </button>
+
       {/* right side */}
       <div
         className={`flex-1 flex flex-col ml-0 md:ml-[16.6667%] overflow-y-auto transition-margin duration-300 ${
@@ -145,8 +142,14 @@ const Portal = () => {
         {/* top nav */}
         <div className="w-full h-[10vh] bg-white shadow flex items-center justify-between px-10">
           <div></div>
-          <div>
+          <div className="flex items-center gap-3">
             <p>{creatorName || "Welcome Back"}</p>
+            <button
+              className="md:hidden block"
+              onClick={() => setSidebarOpen(!sidebarOpen)}
+            >
+              {sidebarOpen ? <IoCloseOutline /> : <HiMenuAlt3 />}
+            </button>
           </div>
         </div>
 
