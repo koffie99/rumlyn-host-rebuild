@@ -132,7 +132,7 @@ const Dashboard = () => {
               strokeWidth={2}
               activeDot={{ r: 8 }}
             />
-          </LineChart> 
+          </LineChart>
         </ResponsiveContainer>
       </div>
     </div>
