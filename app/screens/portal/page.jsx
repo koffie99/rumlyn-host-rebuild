@@ -34,6 +34,7 @@ const Portal = () => {
   const setPage = (item) => {
     sessionStorage.setItem("myPage", item)
     setSelectedPage(item)
+    setSidebarOpen(false)
   }
 
   // custom pages
