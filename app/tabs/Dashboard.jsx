@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import DashCard from "../components/DashCard"
 import { BsHouses } from "react-icons/bs"
 import { GoPeople } from "react-icons/go"
@@ -14,6 +14,41 @@ import {
 } from "recharts"
 
 const Dashboard = () => {
+  const [dashcount, setDashcount] = useState({})
+
+  // retrieve details
+  let creatorId
+
+  if (typeof sessionStorage !== "undefined") {
+    creatorId = sessionStorage.getItem("creatorId")
+  }
+
+  // get dashboard count
+  const getDashcount = async () => {
+    try {
+      const requestOptions = {
+        method: "GET",
+        redirect: "follow",
+      }
+
+      await fetch(
+        `https://api.rumlyn.com/api/v1/dashboard/creator/${creatorId}`,
+        requestOptions
+      )
+        .then((response) => response.json())
+        .then((result) => {
+          setDashcount(result)
+        })
+        .catch((error) => console.error(error))
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
+  useEffect(() => {
+    getDashcount()
+  }, [])
+
   // sample data
   const data = [
     {
@@ -64,9 +99,21 @@ const Dashboard = () => {
     <div className="md:p-12 p-5">
       <h2 className="text-2xl">Dashboard</h2>
       <div className="mt-5 grid md:grid-cols-3 grid-cols-2 md:gap-4 gap-2">
-        <DashCard count={2} item="Listings" icon={BsHouses} />
-        <DashCard count={5} item="Followers" icon={GoPeople} />
-        <DashCard count={3000} item="Earnings" icon={CiMoneyCheck1}/>
+        <DashCard
+          count={dashcount.listings_no || 0}
+          item="Listings"
+          icon={BsHouses}
+        />
+        <DashCard
+          count={dashcount.followers || 0}
+          item="Followers"
+          icon={GoPeople}
+        />
+        <DashCard
+          count={dashcount.revenues || 0}
+          item="Earnings"
+          icon={CiMoneyCheck1}
+        />
       </div>
 
       {/* Engagement Trend Line Chart */}
