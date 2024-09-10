@@ -26,6 +26,7 @@ const Portal = () => {
   }
 
   const [selectPage, setSelectedPage] = useState(myPage)
+  const [sidebarOpen, setSidebarOpen] = useState(false)
 
   // setPage
   const setPage = (item) => {
@@ -56,7 +57,11 @@ const Portal = () => {
   return (
     <div className="min-h-screen w-full flex mesh">
       {/* sidenav */}
-      <div className="flex-[2] bg-white h-[100vh] shadow p-5 flex flex-col gap-5">
+      <div
+        className={`fixed left-0 top-0 bottom-0 flex-[2] bg-white h-full shadow p-5 flex flex-col gap-5 transition-transform duration-300 ${
+          sidebarOpen ? "translate-x-0" : "-translate-x-full"
+        } md:translate-x-0 md:w-64`}
+      >
         <div className="flex items-center gap-3 mb-3">
           <Image
             width={30}
@@ -68,65 +73,75 @@ const Portal = () => {
         </div>
         <div
           className="flex items-center gap-3 side-nav"
-          onClick={(e) => setPage("dashboard")}
+          onClick={() => setPage("dashboard")}
         >
           <TbLayoutDashboard />
           <p>Dashboard</p>
         </div>
         <div
           className="flex items-center gap-3 side-nav"
-          onClick={(e) => setPage("listings")}
+          onClick={() => setPage("listings")}
         >
           <HiOutlineHomeModern />
           <p>Listings</p>
         </div>
         <div
           className="flex items-center gap-3 side-nav"
-          onClick={(e) => setPage("earnings")}
+          onClick={() => setPage("earnings")}
         >
           <GiTakeMyMoney />
           <p>Earnings</p>
         </div>
         <div
           className="flex items-center gap-3 side-nav"
-          onClick={(e) => setPage("activities")}
+          onClick={() => setPage("activities")}
         >
           <BsActivity />
           <p>Activities</p>
         </div>
         <div
           className="flex items-center gap-3 side-nav"
-          onClick={(e) => setPage("followers")}
+          onClick={() => setPage("followers")}
         >
           <GoPeople />
           <p>Followers</p>
         </div>
         <div
           className="flex items-center gap-3 side-nav"
-          onClick={(e) => setPage("settings")}
+          onClick={() => setPage("settings")}
         >
           <IoSettingsOutline />
           <p>Settings</p>
         </div>
         <Popconfirm
           title="Do you want to logout?"
-          okButtonProps={{ style: {backgroundColor: 'tomato', color: 'white'} }}
+          okButtonProps={{
+            style: { backgroundColor: "tomato", color: "white" },
+          }}
           okText="Logout"
           onConfirm={() => {
             location.href = "/"
           }}
         >
-          <div
-            className="flex items-center gap-3 side-nav text-[tomato]"
-            onClick={(e) => setPage("settings")}
-          >
+          <div className="flex items-center gap-3 side-nav text-[tomato]">
             <RiLogoutCircleLine />
             <p>Logout</p>
           </div>
         </Popconfirm>
       </div>
+      {/* mobile menu toggle */}
+      <button
+        className="fixed top-0 right-0 p-4 md:hidden"
+        onClick={() => setSidebarOpen(!sidebarOpen)}
+      >
+        {sidebarOpen ? "Close Menu" : "Open Menu"}
+      </button>
       {/* right side */}
-      <div className="flex-[8] flex flex-col">
+      <div
+        className={`flex-1 flex flex-col ml-0 md:ml-[16.6667%] overflow-y-auto transition-margin duration-300 ${
+          sidebarOpen ? "ml-64" : ""
+        }`}
+      >
         {/* top nav */}
         <div className="w-full h-[10vh] bg-white shadow flex items-center justify-between px-10">
           <div></div>
