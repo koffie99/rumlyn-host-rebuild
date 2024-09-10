@@ -61,7 +61,7 @@ const Dashboard = () => {
   ]
 
   return (
-    <div className="p-12">
+    <div className="md:p-12 p-5">
       <h2 className="text-2xl">Dashboard</h2>
       <div className="mt-5 grid md:grid-cols-3 grid-cols-1 gap-4">
         <DashCard count={2} item="Listings" icon={BsHouses} />
