@@ -1,6 +1,8 @@
 import { Button } from "antd"
 import React, { useEffect, useState } from "react"
 import { Table } from "antd"
+import { render } from "react-dom"
+import Image from "next/image"
 
 const Listings = () => {
   const [listings, setListings] = useState([])
@@ -46,9 +48,19 @@ const Listings = () => {
       key: "title",
     },
     {
-      title: "Description",
-      dataIndex: "desc",
-      key: "desc",
+      title: "Photo",
+      dataIndex: "photos",
+      key: "photos",
+      render: (_, record) => (
+        <div>
+          <Image
+            width={80}
+            height={80}
+            alt="listing photo"
+            src={record.photos[0]}
+          />
+        </div>
+      ),
     },
     {
       title: "Price",
@@ -63,7 +75,7 @@ const Listings = () => {
   ]
 
   return (
-    <div className="p-12">
+    <div className="md:p-12 p-5">
       <div className="flex items-center justify-between">
         <h2 className="text-2xl">Listings</h2>
         <Button className="bg-[#08a88a] text-white py-5">+ Add Listing</Button>
