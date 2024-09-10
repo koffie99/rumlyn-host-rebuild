@@ -3,7 +3,7 @@ import React from "react"
 
 const Contact = () => {
   return (
-    <div className="h-[100%] bg-[#08a88a] text-white md:p-20 p-5 flex gap-8 md:flex-row flex-col">
+    <div className="h-[100%] bg-[#08a88a] text-white md:p-20 p-5 flex gap-8 md:flex-row flex-col" id="contact">
       <div className="flex-[0.6]">
         <h2 className="text-3xl mb-3 lg:text-6xl">
           We'll love to hear from you

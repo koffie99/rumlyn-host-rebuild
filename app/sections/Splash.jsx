@@ -10,7 +10,7 @@ const Splash = () => {
   }
 
   return (
-    <div className="h-[100%] md:h-[100vh] py-12 bg-[#08a88a] flex items-center md:flex-row flex-col justify-center gap-7">
+    <div className="h-[100%] md:h-[100vh] py-12 bg-[#08a88a] flex items-center md:flex-row flex-col justify-center gap-7" id="splash">
       <div>
         <Image
           width={500}
