@@ -4,7 +4,7 @@ import WhyCard from "../components/WhyCard"
 const Why = () => {
   return (
     <div className="h-[100%] py-12 bg-[#ffffff] p-20 text-center flex items-center flex-col bg">
-      <h2 className="text-3xl text-center mb-9">Why Host On Rumlyn</h2>
+      <h2 className="text-3xl lg:text-6xl text-center mb-9">Why Host On Rumlyn</h2>
       <div className="flex justify-center flex-col items-center gap-8">
         <WhyCard
           image_position="left"
