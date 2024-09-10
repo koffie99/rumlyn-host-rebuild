@@ -10,7 +10,10 @@ const Splash = () => {
   }
 
   return (
-    <div className="h-[100%] md:h-[100vh] py-12 bg-[#08a88a] flex items-center md:flex-row flex-col justify-center gap-7" id="splash">
+    <div
+      className="h-[100%] md:h-[100vh] py-12 bg-[#08a88a] flex items-center md:flex-row flex-col justify-center gap-7"
+      id="splash"
+    >
       <div>
         <Image
           width={500}
@@ -18,11 +21,11 @@ const Splash = () => {
           alt="rumlyn cover photo"
           src="/images/rumlyncover.png"
           quality={100}
-          className="h-[50vh] w-full md:h-[500px] md:w-[500px] lg:w-[700px] lg:h-[700px]"
+          className="h-[50vh] w-full md:h-[500px] md:w-[500px] lg:h-[500px] lg:w-[500px] 2xl:w-[700px] 2xl:h-[700px]"
         />
       </div>
       <div className="md:flex-[0.6] lg:flex-[0.5] flex-1 flex flex-col md:p-0 p-7">
-        <h1 className="lg:text-6xl md:text-4xl text-3xl text-white mb-3 md:text-left text-center">
+        <h1 className="2xl:text-6xl md:text-4xl text-3xl text-white mb-3 md:text-left text-center">
           Rent And Sell Your Properties Today
         </h1>
         <p className="text-white md:text-left text-center">

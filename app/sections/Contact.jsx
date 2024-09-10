@@ -3,12 +3,15 @@ import React from "react"
 
 const Contact = () => {
   return (
-    <div className="h-[100%] bg-[#08a88a] text-white md:p-20 p-5 flex gap-8 md:flex-row flex-col" id="contact">
+    <div
+      className="h-[100%] bg-[#08a88a] text-white md:p-20 p-5 flex gap-8 md:flex-row flex-col"
+      id="contact"
+    >
       <div className="flex-[0.6]">
-        <h2 className="text-3xl mb-3 lg:text-6xl">
+        <h2 className="text-3xl mb-3 2xl:text-6xl">
           We'll love to hear from you
         </h2>
-        <p className="lg:text-lg">
+        <p className="2xl:text-lg">
           We are open for enquiries, questions and directives as to how to use
           the platform to your own advantage. We respond to you as quick as
           possible
@@ -16,7 +19,7 @@ const Contact = () => {
       </div>
       <div className="bg-white h-[70vh] w-full flex-[0.7] rounded-lg contact-bg shadow-2xl md:p-12 p-4">
         <div className="w-full h-fit shadow-2xl bg-white rounded-lg text-black p-12">
-          <h2 className="text-xl lg:text-3xl">
+          <h2 className="text-xl 2xl:text-3xl">
             Don't hesitate, send us a message
           </h2>
           <p>We typically response in about an hour.</p>

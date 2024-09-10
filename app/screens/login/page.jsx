@@ -57,7 +57,7 @@ const Login = () => {
 
   return (
     <div className="min-h-screen w-full login-bg flex items-center justify-center gap-8 md:p-0 p-7">
-      <div className="md:h-[80vh] h-fit md:py-0 pb-12 md:flex-[0.5] flex-1 rounded-lg bg-white shadow-2xl flex flex-col items-center">
+      <div className="md:h-[80vh] h-fit lg:h-fit lg:pb-12 md:py-0 pb-12 md:flex-[0.5] lg:flex-[0.4] flex-1 rounded-lg bg-white shadow-2xl flex flex-col items-center">
         <Image
           width={100}
           height={100}
@@ -67,8 +67,8 @@ const Login = () => {
           className="mt-[-40px] bg-white p-5 rounded-full shadow-2xl"
         />
         <div className="mt-4 flex flex-col items-center">
-          <h2 className="text-2xl">Welcome here</h2>
-          <p className="text-sm">Login to get your listings out there</p>
+          <h2 className="text-2xl lg:text-4xl">Welcome here</h2>
+          <p className="text-sm lg:text-lg">Login to get your listings out there</p>
         </div>
         <div className="flex md:w-[70%] w-[90%] flex-col gap-4 mt-7">
           <input
