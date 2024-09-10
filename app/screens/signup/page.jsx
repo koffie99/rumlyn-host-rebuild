@@ -66,13 +66,13 @@ const SignUp = () => {
 
   return (
     <div className="min-h-screen signup-bg flex items-center flex-col justify-center">
-      <div className="text-center px-5 mb-4">
-        <h2 className="text-2xl">Become a host today</h2>
+      <div className="text-center px-5 mb-4 2xl:mb-12">
+        <h2 className="text-2xl 2xl:text-4xl">Become a host today</h2>
         <p className="text-center">
           Join the many other hosts boosting their sales on rumlyn
         </p>
       </div>
-      <div className="md:h-[70vh] h-fit md:py-0 pb-14 bg-white rounded-lg shadow-2xl md:w-[40%] w-[90%] mt-6 md:p-12 p-5 flex flex-col gap-4">
+      <div className="md:h-[70vh] h-fit 2xl:h-fit md:py-0 2xl:pb-14 pb-14 bg-white rounded-lg shadow-2xl md:w-[40%] w-[90%] mt-6 md:p-12 p-5 flex flex-col gap-4">
         <div className="flex justify-center">
           <Image
             width={100}
