@@ -63,10 +63,10 @@ const Dashboard = () => {
   return (
     <div className="md:p-12 p-5">
       <h2 className="text-2xl">Dashboard</h2>
-      <div className="mt-5 grid md:grid-cols-3 grid-cols-1 gap-4">
+      <div className="mt-5 grid md:grid-cols-3 grid-cols-2 gap-4">
         <DashCard count={2} item="Listings" icon={BsHouses} />
         <DashCard count={5} item="Followers" icon={GoPeople} />
-        <DashCard count={3000} item="Earnings" icon={CiMoneyCheck1} />
+        <DashCard count={3000} item="Earnings" icon={CiMoneyCheck1}/>
       </div>
 
       {/* Engagement Trend Line Chart */}
