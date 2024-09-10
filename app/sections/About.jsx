@@ -27,7 +27,7 @@ const About = () => {
           alt="gideon chief marketting officer"
           src="/images/ogidi.png"
           quality={100}
-          className="h-[50vh] w-full md:h-[500px] md:w-[500px] 2xl:w-[700px] 2xl:h-[700px]"
+          className="h-[80%] w-[80%] md:h-[500px] md:w-[500px] 2xl:w-[700px] 2xl:h-[700px]"
         />
       </div>
     </div>

@@ -12,7 +12,7 @@ const WhyCard = ({ image, title, desc, image_position }) => {
         quality={100}
         className={`${
           image_position === "left" ? "block" : "hidden"
-        } h-[50vh] w-full md:h-[400px] md:w-[400px] 2xl:w-[600px] 2xl:h-[600px]`}
+        } h-full w-full md:h-[400px] md:w-[400px] 2xl:w-[600px] 2xl:h-[600px]`}
       />
       <div className="flex-[0.6]">
         <h2 className="text-2xl 2xl:text-4xl">{title}</h2>
@@ -26,7 +26,7 @@ const WhyCard = ({ image, title, desc, image_position }) => {
         quality={100}
         className={`${
           image_position === "right" ? "block" : "hidden"
-        }  h-[50vh] w-full md:h-[400px] md:w-[400px] 2xl:w-[600px] 2xl:h-[600px]`}
+        }  h-full w-full md:h-[400px] md:w-[400px] 2xl:w-[600px] 2xl:h-[600px]`}
       />
     </div>
   )
