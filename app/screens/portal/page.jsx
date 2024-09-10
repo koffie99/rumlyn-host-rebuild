@@ -136,9 +136,12 @@ const Portal = () => {
 
       {/* right side */}
       <div
-        className={`flex-1 flex flex-col ml-0 md:ml-[16.6667%] overflow-y-auto transition-margin duration-300 ${
+        className={`flex-1 flex flex-col z-[999] ml-0 md:ml-[16.6667%] overflow-y-auto transition-margin duration-300 ${
           sidebarOpen ? "ml-64" : ""
         }`}
+        // className={`fixed left-0 top-0 bottom-0 flex-[2] bg-white h-full shadow p-5 flex flex-col gap-5 transition-transform duration-300 z-[1000] ${
+        //   sidebarOpen ? "translate-x-0" : "-translate-x-full"
+        // } md:translate-x-0 md:w-64`}
       >
         {/* top nav */}
         <div className="w-full h-[10vh] bg-white shadow flex items-center justify-between px-10">
@@ -155,7 +158,7 @@ const Portal = () => {
         </div>
 
         {/* custom page */}
-        <div>{customPages()}</div>
+        <div className="z-[-999]">{customPages()}</div>
       </div>
     </div>
   )
