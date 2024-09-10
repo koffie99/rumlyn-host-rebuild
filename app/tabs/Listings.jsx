@@ -70,7 +70,7 @@ const Listings = () => {
     {
       title: "Action",
       key: "action",
-      render: (text, record) => <Button type="link">Edit</Button>,
+      render: (text, record) => <Button type="link">View</Button>,
     },
   ]
 
