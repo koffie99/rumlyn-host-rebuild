@@ -63,7 +63,7 @@ const Dashboard = () => {
   return (
     <div className="p-12">
       <h2 className="text-2xl">Dashboard</h2>
-      <div className="mt-5 grid grid-cols-3 gap-4">
+      <div className="mt-5 grid md:grid-cols-3 grid-cols-1 gap-4">
         <DashCard count={2} item="Listings" icon={BsHouses} />
         <DashCard count={5} item="Followers" icon={GoPeople} />
         <DashCard count={3000} item="Earnings" icon={CiMoneyCheck1} />
@@ -81,7 +81,7 @@ const Dashboard = () => {
             <Line
               type="monotone"
               dataKey="pv"
-              stroke="#8884d8"
+              stroke="#08a88a"
               strokeWidth={2}
               activeDot={{ r: 8 }}
             />

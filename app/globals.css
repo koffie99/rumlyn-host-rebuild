@@ -62,15 +62,17 @@ p {
 
 .side-nav {
   cursor: pointer;
+  padding: 10px;
+  border-radius: 10px;
 }
 
 .side-nav:hover {
-  color: #c8a88a;
+  background-color: #f0fffd;
   transform: scale(1.05);
   transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
 }
 .side-nav p {
-  font-size: 1.25rem; /* increase text size */
+  font-size: 1rem; /* increase text size */
 }
 .side-nav svg {
   font-size: 1.5rem; /* increase icon size */
