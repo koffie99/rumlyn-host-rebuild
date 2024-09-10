@@ -19,7 +19,7 @@ const SignUp = () => {
       myHeaders.append("Content-Type", "application/json")
 
       const raw = JSON.stringify({
-        creator_name: name.trim(),
+        name: name.trim(),
         email: email.trim(),
         password: password.trim(),
         phone: phone.trim(),
