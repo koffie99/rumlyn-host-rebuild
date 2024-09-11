@@ -1,5 +1,5 @@
 import { Table } from "antd"
-import React, { useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 
 const Followers = () => {
   const [followers, setFollowers] = useState(null)
@@ -52,7 +52,11 @@ const Followers = () => {
     },
     {
       title: "Action",
-      render: (_, record) => <button type="button">Unfollow</button>, // replace with actual action button
+      render: (_, record) => (
+        <div className="bg-red-500 px-2 py-2 items-center flex text-center text-white text-sm justify-center rounded-md">
+          Delete
+        </div>
+      ),
     },
   ]
 

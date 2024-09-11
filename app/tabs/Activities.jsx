@@ -1,5 +1,6 @@
 import { Table } from "antd"
-import React, { useEffect, useState } from "react"
+import { useEffect, useState } from "react"
+import formatData from "../helpers/formatDate"
 
 const Activities = () => {
   const [activities, setActivities] = useState(null)
@@ -48,10 +49,15 @@ const Activities = () => {
       title: "Occurence Date",
       dataIndex: "dateCreated",
       key: "dateCreated",
+      render: (record) => <p>{formatData(record)}</p>,
     },
     {
       title: "Action",
-      render: (_, record) => <div>Delete</div>,
+      render: (_, record) => (
+        <div className="bg-red-500 px-2 py-2 items-center flex text-center text-white text-[12px] justify-center rounded-md cursor-pointer">
+          Delete
+        </div>
+      ),
     },
   ]
 
