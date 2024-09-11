@@ -15,8 +15,8 @@ const Nav = () => {
       </div>
       <div>
         <ul className="flex gap-8 text-white">
-          <a href="#splash">
-            <li className="cursor-pointer hover:underline">Splash</li>
+          <a href="#">
+            <li className="cursor-pointer hover:underline">Home</li>
           </a>
           <a href="#about">
             <li className="cursor-pointer hover:underline">About</li>
