@@ -1,4 +1,5 @@
-import { Table } from "antd"
+import { QuestionCircleOutlined } from "@ant-design/icons"
+import { Popconfirm, Table } from "antd"
 import { useEffect, useState } from "react"
 import formatData from "../helpers/formatDate"
 
@@ -54,9 +55,21 @@ const Activities = () => {
     {
       title: "Action",
       render: (_, record) => (
-        <div className="bg-red-500 px-2 py-2 items-center flex text-center text-white text-[12px] justify-center rounded-md cursor-pointer">
-          Delete
-        </div>
+        <Popconfirm
+          title="Delete the task"
+          description="Are you sure to delete this task?"
+          icon={
+            <QuestionCircleOutlined
+              style={{
+                color: "red",
+              }}
+            />
+          }
+        >
+          <button className="bg-red-500 px-4 py-2 items-center flex text-center text-white text-[12px] justify-center rounded-md cursor-pointer">
+            Delete
+          </button>
+        </Popconfirm>
       ),
     },
   ]
