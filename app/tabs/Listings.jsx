@@ -101,9 +101,10 @@ const Listings = () => {
         size="large"
       >
         <div className="flex items-center justify-between">
-          <h2 className="font-bold text-xl mb-4 mt-3">Essentials</h2>
-          <IoMdClose onClick={() => setOpenDrawer(false)} />
+          <h2 className="font-bold text-xl mt-3">Essentials</h2>
+          <IoMdClose onClick={() => setOpenDrawer(false)} className="text-lg" />
         </div>
+        <p className=" mb-4 text-[#818181]">Kindly enter the fields below</p>
         <div className="grid grid-cols-2 gap-3">
           <input
             type="text"
