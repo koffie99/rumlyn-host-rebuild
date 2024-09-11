@@ -9,6 +9,7 @@ import { IoMdClose } from "react-icons/io"
 const Listings = () => {
   const [listings, setListings] = useState([])
   const [openDrawer, setOpenDrawer] = useState(false)
+  const [openDetailDrawer, setOpenDetailDrawer] = useState(false)
 
   // retrieve creator id
   let creatorId
@@ -73,7 +74,16 @@ const Listings = () => {
     {
       title: "Action",
       key: "action",
-      render: (text, record) => <Button type="link">View</Button>,
+      render: (text, record) => (
+        <Button
+          type="link"
+          onClick={() => {
+            setOpenDetailDrawer(true)
+          }}
+        >
+          View
+        </Button>
+      ),
     },
   ]
 
@@ -100,52 +110,73 @@ const Listings = () => {
         className="custom-drawer pt-12"
         size="large"
       >
-        <div className="flex items-center justify-between">
-          <h2 className="font-bold text-xl mt-3">Essentials</h2>
-          <IoMdClose onClick={() => setOpenDrawer(false)} className="text-lg" />
+        <div className="p-[4rem]">
+          <div className="flex items-center justify-between">
+            <h2 className="font-bold text-xl mt-3">Essentials</h2>
+            <IoMdClose
+              onClick={() => setOpenDrawer(false)}
+              className="text-lg"
+            />
+          </div>
+          <p className=" mb-4 text-[#818181] text-md">
+            Kindly enter the fields below
+          </p>
+          <div className="grid grid-cols-2 gap-3">
+            <input
+              type="text"
+              placeholder="Title"
+              className="ring-1 ring-[#ccc] p-3 rounded-lg col-span-2"
+            />
+            <textarea
+              rows={6}
+              type="text"
+              placeholder="Desc"
+              className="ring-1 ring-[#ccc] p-3 rounded-lg col-span-2"
+            />
+            <input
+              type="text"
+              placeholder="Location"
+              className="ring-1 ring-[#ccc] p-3 rounded-lg"
+            />
+            <input
+              type="text"
+              placeholder="Currency"
+              className="ring-1 ring-[#ccc] p-3 rounded-lg"
+            />
+            <input
+              type="text"
+              placeholder="Mode"
+              className="ring-1 ring-[#ccc] p-3 rounded-lg"
+            />
+            <input
+              type="text"
+              placeholder="Price"
+              className="ring-1 ring-[#ccc] p-3 rounded-lg"
+            />
+            <input
+              type="file"
+              placeholder="Photos"
+              className="ring-1 ring-[#ccc] p-3 rounded-lg col-span-2"
+            />
+            <Button className="bg-[#08a88a] text-white p-6 col-span-2">
+              <span>Continue</span>
+              <MdArrowRightAlt />
+            </Button>
+          </div>
         </div>
-        <p className=" mb-4 text-[#818181]">Kindly enter the fields below</p>
-        <div className="grid grid-cols-2 gap-3">
-          <input
-            type="text"
-            placeholder="Title"
-            className="ring-1 ring-[#ccc] p-3 rounded-lg col-span-2"
-          />
-          <textarea
-            rows={6}
-            type="text"
-            placeholder="Desc"
-            className="ring-1 ring-[#ccc] p-3 rounded-lg col-span-2"
-          />
-          <input
-            type="text"
-            placeholder="Location"
-            className="ring-1 ring-[#ccc] p-3 rounded-lg"
-          />
-          <input
-            type="text"
-            placeholder="Currency"
-            className="ring-1 ring-[#ccc] p-3 rounded-lg"
-          />
-          <input
-            type="text"
-            placeholder="Mode"
-            className="ring-1 ring-[#ccc] p-3 rounded-lg"
-          />
-          <input
-            type="text"
-            placeholder="Price"
-            className="ring-1 ring-[#ccc] p-3 rounded-lg"
-          />
-          <input
-            type="file"
-            placeholder="Photos"
-            className="ring-1 ring-[#ccc] p-3 rounded-lg col-span-2"
-          />
-          <Button className="bg-[#08a88a] text-white p-6 col-span-2">
-            <span>Continue</span>
-            <MdArrowRightAlt />
-          </Button>
+      </Drawer>
+
+      {/* listing detail drawer */}
+      <Drawer
+        size="large"
+        placement="bottom"
+        open={openDetailDrawer}
+        headerStyle={{ display: "none" }}
+        className="pt-12"
+      >
+        <div>
+          <h2>Listing Name</h2>
+          <p>Hello there</p>
         </div>
       </Drawer>
     </div>
