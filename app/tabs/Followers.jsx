@@ -35,7 +35,7 @@ const Followers = () => {
 
   useEffect(() => {
     getFollowers()
-  })
+  },[])
 
   // columns
   const columns = [
