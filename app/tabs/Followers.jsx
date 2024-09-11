@@ -35,14 +35,15 @@ const Followers = () => {
 
   useEffect(() => {
     getFollowers()
-  },[])
+  }, [])
 
   // columns
   const columns = [
     {
       title: "User",
-      dataIndex: "user",
-      key: "user",
+      render: (_, record) => (
+        <p className="capitalize">{record.user?.username}</p>
+      ),
     },
     {
       title: "Date Followed",
