@@ -94,7 +94,7 @@ const Listings = () => {
         open={openDrawer}
         onClose={() => setOpenDrawer(false)}
         placement="bottom"
-        title="Add Listing"
+        // title="Add Listing"
         className="custom-drawer"
         size="large"
       >
@@ -103,12 +103,13 @@ const Listings = () => {
           <input
             type="text"
             placeholder="Title"
-            className="ring-1 ring-[#ccc] p-3 rounded-lg"
+            className="ring-1 ring-[#ccc] p-3 rounded-lg col-span-2"
           />
-          <input
+          <textarea
+            rows={6}
             type="text"
             placeholder="Desc"
-            className="ring-1 ring-[#ccc] p-3 rounded-lg"
+            className="ring-1 ring-[#ccc] p-3 rounded-lg col-span-2"
           />
           <input
             type="text"
