@@ -1,4 +1,4 @@
-import { Button } from "antd"
+import { Button, Drawer } from "antd"
 import React, { useEffect, useState } from "react"
 import { Table } from "antd"
 import { render } from "react-dom"
@@ -6,6 +6,7 @@ import Image from "next/image"
 
 const Listings = () => {
   const [listings, setListings] = useState([])
+  const [openDrawer, setOpenDrawer] = useState(false)
 
   // retrieve creator id
   let creatorId
@@ -78,11 +79,23 @@ const Listings = () => {
     <div className="md:p-12 p-5">
       <div className="flex items-center justify-between">
         <h2 className="text-2xl">Listings</h2>
-        <Button className="bg-[#08a88a] text-white py-5">+ Add Listing</Button>
+        <Button
+          className="bg-[#08a88a] text-white py-5"
+          onClick={() => setOpenDrawer(true)}
+        >
+          + Add Listing
+        </Button>
       </div>
       <div className="bg-white p-5 shadow rounded-lg mt-7">
         <Table dataSource={listings} columns={columns} />
       </div>
+      <Drawer
+        open={openDrawer}
+        onClose={() => setOpenDrawer(false)}
+        placement="bottom"
+        title="Add Listing"
+        size="default"
+      ></Drawer>
     </div>
   )
 }
