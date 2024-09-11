@@ -81,3 +81,11 @@ p {
 .side-nav svg {
   font-size: 1.5rem; /* increase icon size */
 }
+
+.drawer {
+  height: 100vh !important;
+}
+
+.custom-drawer .ant-drawer-content {
+  height: 70vh !important; /* Adjust the height as needed */
+}

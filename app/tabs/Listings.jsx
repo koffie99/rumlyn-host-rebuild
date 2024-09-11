@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react"
 import { Table } from "antd"
 import { render } from "react-dom"
 import Image from "next/image"
+import { MdArrowRightAlt } from "react-icons/md"
 
 const Listings = () => {
   const [listings, setListings] = useState([])
@@ -94,8 +95,52 @@ const Listings = () => {
         onClose={() => setOpenDrawer(false)}
         placement="bottom"
         title="Add Listing"
-        size="default"
-      ></Drawer>
+        className="custom-drawer"
+        size="large"
+      >
+        <h2 className="font-bold text-lg mb-4 mt-3">Essentials</h2>
+        <div className="grid grid-cols-2 gap-3">
+          <input
+            type="text"
+            placeholder="Title"
+            className="ring-1 ring-[#ccc] p-3 rounded-lg"
+          />
+          <input
+            type="text"
+            placeholder="Desc"
+            className="ring-1 ring-[#ccc] p-3 rounded-lg"
+          />
+          <input
+            type="text"
+            placeholder="Location"
+            className="ring-1 ring-[#ccc] p-3 rounded-lg"
+          />
+          <input
+            type="text"
+            placeholder="Currency"
+            className="ring-1 ring-[#ccc] p-3 rounded-lg"
+          />
+          <input
+            type="text"
+            placeholder="Mode"
+            className="ring-1 ring-[#ccc] p-3 rounded-lg"
+          />
+          <input
+            type="text"
+            placeholder="Price"
+            className="ring-1 ring-[#ccc] p-3 rounded-lg"
+          />
+          <input
+            type="file"
+            placeholder="Photos"
+            className="ring-1 ring-[#ccc] p-3 rounded-lg col-span-2"
+          />
+          <Button className="bg-[#08a88a] text-white p-5 col-span-2">
+            <span>Continue</span>
+            <MdArrowRightAlt />
+          </Button>
+        </div>
+      </Drawer>
     </div>
   )
 }
