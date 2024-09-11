@@ -95,7 +95,8 @@ const Listings = () => {
         onClose={() => setOpenDrawer(false)}
         placement="bottom"
         // title="Add Listing"
-        className="custom-drawer"
+        headerStyle={{ display: 'none' }}
+        className="custom-drawer pt-12"
         size="large"
       >
         <h2 className="font-bold text-lg mb-4 mt-3">Essentials</h2>
@@ -136,7 +137,7 @@ const Listings = () => {
             placeholder="Photos"
             className="ring-1 ring-[#ccc] p-3 rounded-lg col-span-2"
           />
-          <Button className="bg-[#08a88a] text-white p-5 col-span-2">
+          <Button className="bg-[#08a88a] text-white p-6 col-span-2">
             <span>Continue</span>
             <MdArrowRightAlt />
           </Button>
