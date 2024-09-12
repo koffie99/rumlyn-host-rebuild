@@ -110,7 +110,7 @@ const Listings = () => {
         className="custom-drawer pt-12"
         size="large"
       >
-        <div className="p-[4rem]">
+        <div className="md:p-[4rem] p-1 py-8">
           <div className="flex items-center justify-between">
             <h2 className="font-bold text-xl mt-3">Essentials</h2>
             <IoMdClose
