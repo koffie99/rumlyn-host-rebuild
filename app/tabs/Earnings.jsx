@@ -1,8 +1,14 @@
-import { Table } from "antd"
-import React, { useEffect, useState } from "react"
+import { QuestionCircleOutlined } from "@ant-design/icons"
+import { Popconfirm, Table } from "antd"
+import { useEffect, useState } from "react"
+
+import { Toaster, toast } from "react-hot-toast"
+
+import formatData from "../helpers/formatDate"
 
 const Earnings = () => {
   const [earnings, setEarnings] = useState(null)
+  const [isDeleting, setisDeleting] = useState(false)
 
   // get creator id
   let creatorId
@@ -40,6 +46,37 @@ const Earnings = () => {
     }
   }
 
+  const deleteEarning = async (earningId) => {
+    try {
+      setisDeleting(true)
+      const requestOptions = {
+        method: "DELETE",
+        redirect: "follow",
+      }
+
+      await fetch(
+        `https://api.rumlyn.com/api/v1/revenues/delete/${earningId}`,
+        requestOptions
+      )
+        .then((response) => response.json())
+        .then((result) => {
+          if (result.msg === "Revenue deleted successfully") {
+            toast.success("Earning deleted successfully")
+            console.log(result)
+            getEarnings()
+            setisDeleting(false)
+          } else {
+            toast.error(result.msg)
+            setisDeleting(false)
+          }
+        })
+        .catch((error) => console.error(error))
+    } catch (err) {
+      console.log(err)
+      setisDeleting(false)
+    }
+  }
+
   useEffect(() => {
     getEarnings()
   }, [])
@@ -57,8 +94,35 @@ const Earnings = () => {
       key: "amount",
     },
     {
-      title: "Actions",
-      render: (_, record) => <div>Delete</div>,
+      title: "Date Created",
+      dataIndex: "dateCreated",
+      key: "dateCreated",
+      render: (record) => <p>{formatData(record)}</p>,
+    },
+    {
+      title: "Action",
+      render: (_, record) => (
+        <Popconfirm
+          title="Delete the Earning"
+          description="Are you sure to delete this Earning?"
+          okText={isDeleting ? "Deleting" : "Delete"}
+          onConfirm={() => deleteEarning(record._id)}
+          icon={
+            <QuestionCircleOutlined
+              style={{
+                color: "red",
+              }}
+            />
+          }
+          okButtonProps={{
+            style: { backgroundColor: "red", borderColor: "red" },
+          }}
+        >
+          <button className="bg-red-500 px-4 py-2 items-center flex text-center text-white text-[12px] justify-center rounded-md cursor-pointer">
+            Delete
+          </button>
+        </Popconfirm>
+      ),
     },
   ]
 
@@ -71,6 +135,8 @@ const Earnings = () => {
       <div className="mt-7 bg-white rounded-lg p-5 shadow">
         <Table dataSource={earnings} columns={columns} />
       </div>
+
+      <Toaster />
     </div>
   )
 }

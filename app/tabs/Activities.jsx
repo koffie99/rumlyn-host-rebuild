@@ -1,8 +1,12 @@
-import { Table } from "antd"
-import React, { useEffect, useState } from "react"
+import { QuestionCircleOutlined } from "@ant-design/icons"
+import { Popconfirm, Table } from "antd"
+import { useEffect, useState } from "react"
+import { Toaster, toast } from "react-hot-toast"
+import formatData from "../helpers/formatDate"
 
 const Activities = () => {
   const [activities, setActivities] = useState(null)
+  const [isDeleting, setisDeleting] = useState(false)
 
   // get creator id
   let creatorId
@@ -33,6 +37,37 @@ const Activities = () => {
     }
   }
 
+  // delete activities
+  const deleteActivity = async (activityId) => {
+    try {
+      setisDeleting(true)
+      const requestOptions = {
+        method: "DELETE",
+        redirect: "follow",
+      }
+      await fetch(
+        `https://api.rumlyn.com/api/v1/activity/delete/${activityId}`,
+        requestOptions
+      )
+        .then((response) => response.json())
+        .then((result) => {
+          if (result.msg === "activity deleted successfully") {
+            toast.success(result.msg)
+            console.log(result.msg)
+            getActivities()
+            setisDeleting(false)
+          } else {
+            toast.error(result.msg)
+            setisDeleting(false)
+          }
+        })
+        .catch((error) => console.error(error))
+    } catch (err) {
+      console.log(err)
+      setisDeleting(false)
+    }
+  }
+
   useEffect(() => {
     getActivities()
   }, [])
@@ -48,10 +83,32 @@ const Activities = () => {
       title: "Occurence Date",
       dataIndex: "dateCreated",
       key: "dateCreated",
+      render: (record) => <p>{formatData(record)}</p>,
     },
     {
       title: "Action",
-      render: (_, record) => <div>Delete</div>,
+      render: (_, record) => (
+        <Popconfirm
+          title="Delete the Activity"
+          description="Are you sure to delete this Activity?"
+          okText={isDeleting ? "Deleting" : "Delete"}
+          onConfirm={() => deleteActivity(record._id)}
+          icon={
+            <QuestionCircleOutlined
+              style={{
+                color: "red",
+              }}
+            />
+          }
+          okButtonProps={{
+            style: { backgroundColor: "red", borderColor: "red" },
+          }}
+        >
+          <button className="bg-red-500 px-4 py-2 items-center flex text-center text-white text-[12px] justify-center rounded-md cursor-pointer">
+            Delete
+          </button>
+        </Popconfirm>
+      ),
     },
   ]
 
@@ -64,6 +121,7 @@ const Activities = () => {
       <div className="mt-8 bg-white p-6 rounded-lg shadow">
         <Table dataSource={activities} columns={columns} />
       </div>
+      <Toaster />
     </div>
   )
 }
