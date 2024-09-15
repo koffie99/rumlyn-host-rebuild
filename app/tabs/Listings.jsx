@@ -1,19 +1,11 @@
-import {
-  Button,
-  Drawer,
-  Form,
-  Input,
-  Select,
-  Checkbox,
-  Upload,
-  Spin,
-} from "antd"
 import React, { useState } from "react"
+import { Form, Input, Button, Checkbox, Upload, Select, Drawer } from "antd"
+import { UploadOutlined } from "@ant-design/icons"
 import { MdArrowRightAlt } from "react-icons/md"
 import { IoMdClose } from "react-icons/io"
 import { Toaster, toast } from "react-hot-toast"
-import { UploadOutlined } from "@ant-design/icons"
 
+const { TextArea } = Input
 const { Option } = Select
 
 const Listings = () => {
@@ -62,45 +54,34 @@ const Listings = () => {
     }
   }
 
+  const handleNextStep = () => setStep((prev) => prev + 1)
+  const handlePreviousStep = () => setStep((prev) => prev - 1)
+
   const EssentialsUi = () => (
     <Form
       form={form}
       layout="vertical"
-      onFinish={() => setStep(2)}
+      onFinish={handleNextStep}
       initialValues={{
-        title: "Testing temp listing",
-        desc: "Testing description",
-        price: "500",
-        contact: "0293848374883892",
-        creator_id: "66e05d641b38a6a0fb4a5bee",
-        property_type: "House",
-        amenities: ["66dee58c8c6f52e9c9ddfb5d"],
-        allowable_duration: "Long term",
-        isRenewable: true,
-        no_bedroom: "3",
-        no_bathroom: "2",
-        no_kitchen: "1",
-        hasCorridor: true,
-        no_garage: "2",
-        isNegotiable: false,
-        isFurnished: true,
-        currency_type: "USD",
+        title: "",
+        desc: "",
+        price: "",
+        contact: "",
+        currency_type: "",
+        mode: "",
         location: {
-          coordinates: ["20.7749", "30.4194"],
-          address: "123 Main St, San Francisco, CA",
+          address: "",
+          coordinates: [],
         },
-        condition: "for sale",
-        isAvailable: true,
-        isFeatured: true,
-        mode: "sell",
+        photos: [],
       }}
     >
-      <div className="md:p-[4rem] p-1 py-8">
+      <div className="p-8">
         <div className="flex items-center justify-between">
-          <h2 className="font-bold text-xl mt-3">Essentials</h2>
+          <h2 className="font-bold text-xl">Essentials</h2>
           <IoMdClose onClick={() => setOpenDrawer(false)} className="text-lg" />
         </div>
-        <p className=" mb-4 text-[#818181] text-md">
+        <p className="mb-4 text-[#818181] text-md">
           Kindly enter the fields below
         </p>
         <Form.Item
@@ -115,14 +96,23 @@ const Listings = () => {
           label="Description"
           rules={[{ required: true, message: "Please enter the description" }]}
         >
-          <Input.TextArea rows={6} placeholder="Description" />
+          <TextArea rows={6} placeholder="Description" />
         </Form.Item>
         <Form.Item
           name="location.address"
-          label="Location"
-          rules={[{ required: true, message: "Please enter the location" }]}
+          label="Location Address"
+          rules={[
+            { required: true, message: "Please enter the location address" },
+          ]}
         >
-          <Input placeholder="Location" />
+          <Input placeholder="Location Address" />
+        </Form.Item>
+        <Form.Item
+          name="location.coordinates"
+          label="Location Coordinates (latitude, longitude)"
+          rules={[{ required: true, message: "Please enter the coordinates" }]}
+        >
+          <Input placeholder="Latitude, Longitude" />
         </Form.Item>
         <Form.Item
           name="currency_type"
@@ -163,151 +153,140 @@ const Listings = () => {
     </Form>
   )
 
-  const PropertyFeaturesUi = () => (
-    <Form form={form} layout="vertical" onFinish={() => setStep(3)}>
-      <div className="md:p-[4rem] p-1 py-8">
+  const DetailsUi = () => (
+    <Form
+      form={form}
+      layout="vertical"
+      onFinish={handleNextStep}
+      initialValues={{
+        property_type: "",
+        amenities: [],
+        allowable_duration: "",
+        isRenewable: false,
+        no_bedroom: "",
+        no_bathroom: "",
+        no_kitchen: "",
+        hasCorridor: false,
+        no_garage: "",
+        isNegotiable: false,
+        isFurnished: false,
+        condition: "",
+        isAvailable: false,
+        isFeatured: false,
+      }}
+    >
+      <div className="p-8">
         <div className="flex items-center justify-between">
-          <h2 className="font-bold text-xl mt-3">Property Features</h2>
+          <h2 className="font-bold text-xl">Details</h2>
           <IoMdClose onClick={() => setOpenDrawer(false)} className="text-lg" />
         </div>
-        <p className=" mb-4 text-[#818181] text-md">
-          Kindly enter the fields below
+        <p className="mb-4 text-[#818181] text-md">
+          Please provide additional details
         </p>
         <Form.Item
           name="property_type"
           label="Property Type"
           rules={[
-            { required: true, message: "Please enter the property type" },
+            { required: true, message: "Please select the property type" },
           ]}
         >
-          <Input placeholder="Property Type" />
+          <Select placeholder="Select Property Type">
+            <Option value="House">House</Option>
+            <Option value="Apartment">Apartment</Option>
+            <Option value="Condo">Condo</Option>
+          </Select>
         </Form.Item>
         <Form.Item
-          name="condition"
-          label="Condition"
-          rules={[{ required: true, message: "Please enter the condition" }]}
+          name="amenities"
+          label="Amenities"
+          rules={[{ required: true, message: "Please select amenities" }]}
         >
-          <Input placeholder="Condition" />
+          <Select mode="multiple" placeholder="Select Amenities">
+            <Option value="Gym">Gym</Option>
+            <Option value="Pool">Pool</Option>
+            <Option value="Parking">Parking</Option>
+          </Select>
         </Form.Item>
         <Form.Item
-          name="no_bedroom"
-          label="No. of Bedrooms"
+          name="allowable_duration"
+          label="Allowable Duration"
           rules={[
-            { required: true, message: "Please enter the number of bedrooms" },
+            { required: true, message: "Please select allowable duration" },
           ]}
         >
-          <Input type="number" placeholder="No. of Bedrooms" />
+          <Select placeholder="Select Duration">
+            <Option value="Short term">Short term</Option>
+            <Option value="Long term">Long term</Option>
+          </Select>
         </Form.Item>
-        <Form.Item
-          name="no_bathroom"
-          label="No. of Bathrooms"
-          rules={[
-            { required: true, message: "Please enter the number of bathrooms" },
-          ]}
-        >
-          <Input placeholder="No. of Bathrooms" />
+        <Form.Item name="no_bedroom" label="Number of Bedrooms">
+          <Input type="number" placeholder="Number of Bedrooms" />
         </Form.Item>
-        <Form.Item
-          name="no_kitchen"
-          label="No. of Kitchens"
-          rules={[
-            { required: true, message: "Please enter the number of kitchens" },
-          ]}
-        >
-          <Input placeholder="No. of Kitchens" />
+        <Form.Item name="no_bathroom" label="Number of Bathrooms">
+          <Input type="number" placeholder="Number of Bathrooms" />
         </Form.Item>
-        <Form.Item
-          name="no_garage"
-          label="No. of Garages"
-          rules={[
-            { required: true, message: "Please enter the number of garages" },
-          ]}
-        >
-          <Input placeholder="No. of Garages" />
+        <Form.Item name="no_kitchen" label="Number of Kitchens">
+          <Input type="number" placeholder="Number of Kitchens" />
         </Form.Item>
         <Form.Item name="hasCorridor" valuePropName="checked">
           <Checkbox>Has Corridor</Checkbox>
         </Form.Item>
-        <Button type="primary" htmlType="submit">
-          <span>Continue</span>
-          <MdArrowRightAlt />
-        </Button>
-      </div>
-    </Form>
-  )
-
-  const AdditionalFeaturesUi = () => (
-    <Form form={form} layout="vertical" onFinish={() => setStep(4)}>
-      <div className="md:p-[4rem] p-1 py-8">
-        <div className="flex items-center justify-between">
-          <h2 className="font-bold text-xl mt-3">Additional Features</h2>
-          <IoMdClose onClick={() => setOpenDrawer(false)} className="text-lg" />
-        </div>
-        <p className=" mb-4 text-[#818181] text-md">
-          Kindly enter the fields below
-        </p>
-        <Form.Item name="isFurnished" valuePropName="checked">
-          <Checkbox>Is Furnished?</Checkbox>
+        <Form.Item name="no_garage" label="Number of Garages">
+          <Input type="number" placeholder="Number of Garages" />
         </Form.Item>
         <Form.Item name="isNegotiable" valuePropName="checked">
-          <Checkbox>Is Negotiable?</Checkbox>
+          <Checkbox>Negotiable</Checkbox>
         </Form.Item>
-        <Form.Item name="hasCorridor" valuePropName="checked">
-          <Checkbox>Has Corridor</Checkbox>
+        <Form.Item name="isFurnished" valuePropName="checked">
+          <Checkbox>Furnished</Checkbox>
         </Form.Item>
-        <Form.Item name="agent_fee" valuePropName="checked">
-          <Checkbox>Agent fee?</Checkbox>
+        <Form.Item name="condition" label="Condition">
+          <Select placeholder="Select Condition">
+            <Option value="for sale">For Sale</Option>
+            <Option value="for rent">For Rent</Option>
+          </Select>
         </Form.Item>
-        <Form.Item name="amenities" label="Amenities">
-          <Input placeholder="Amenities" />
-        </Form.Item>
-        <Form.Item name="allowable_duration" label="Duration">
-          <Input placeholder="Duration" />
-        </Form.Item>
-        <Button type="primary" htmlType="submit">
-          <span>Continue</span>
-          <MdArrowRightAlt />
-        </Button>
-      </div>
-    </Form>
-  )
-
-  const PromotionUi = () => (
-    <Form form={form} layout="vertical" onFinish={onFinish}>
-      <div className="md:p-[4rem] p-1 py-8">
-        <div className="flex items-center justify-between">
-          <h2 className="font-bold text-xl mt-3">Promotion</h2>
-          <IoMdClose onClick={() => setOpenDrawer(false)} className="text-lg" />
-        </div>
-        <p className=" mb-4 text-[#818181] text-md">
-          Kindly enter the fields below
-        </p>
         <Form.Item name="isAvailable" valuePropName="checked">
-          <Checkbox>Is Available?</Checkbox>
+          <Checkbox>Available</Checkbox>
         </Form.Item>
         <Form.Item name="isFeatured" valuePropName="checked">
-          <Checkbox>Is Featured?</Checkbox>
+          <Checkbox>Featured</Checkbox>
         </Form.Item>
-        <Form.Item name="isNegotiable" valuePropName="checked">
-          <Checkbox>Is Negotiable?</Checkbox>
-        </Form.Item>
-        <Form.Item name="isFurnished" valuePropName="checked">
-          <Checkbox>Is Furnished?</Checkbox>
-        </Form.Item>
+        <Button onClick={handlePreviousStep}>Back</Button>
         <Button type="primary" htmlType="submit" loading={addListingLoading}>
-          <span>Submit</span>
+          <span>Continue</span>
           <MdArrowRightAlt />
         </Button>
       </div>
     </Form>
   )
 
-  const steps = [
-    EssentialsUi,
-    PropertyFeaturesUi,
-    AdditionalFeaturesUi,
-    PromotionUi,
-  ]
+  const ReviewUi = () => (
+    <div className="p-8">
+      <div className="flex items-center justify-between">
+        <h2 className="font-bold text-xl">Review</h2>
+        <IoMdClose onClick={() => setOpenDrawer(false)} className="text-lg" />
+      </div>
+      <p className="mb-4 text-[#818181] text-md">
+        Please review the information before submitting
+      </p>
+      {/* Display summary of all steps' information here */}
+      <Button onClick={handlePreviousStep}>Back</Button>
+      <Button
+        type="primary"
+        onClick={() => form.submit()}
+        loading={addListingLoading}
+      >
+        Submit
+      </Button>
+    </div>
+  )
+
+  const steps = [EssentialsUi, DetailsUi, ReviewUi]
+
+  // Ensure step is within valid range
+  const currentStep = Math.max(1, Math.min(step, steps.length))
+  const CurrentStepComponent = steps[currentStep - 1]
 
   return (
     <div>
@@ -322,7 +301,7 @@ const Listings = () => {
         open={openDrawer}
         width={600}
       >
-        {steps[step - 1]()}
+        {CurrentStepComponent && <CurrentStepComponent />}
       </Drawer>
       <Toaster />
     </div>
